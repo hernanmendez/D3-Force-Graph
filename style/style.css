@@ -1,0 +1,20 @@
+body{
+    padding:0;
+    padding-top: 10px;
+    background-color: #ddd;
+}
+.link{
+    stroke: darkgray;
+    stroke-width: 2px;
+}
+img{
+    position: absolute;
+}
+#main{
+    box-shadow: 0 0 10px #777;
+    position: relative;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius: 20px;
+    background-color: #eee;
+}
