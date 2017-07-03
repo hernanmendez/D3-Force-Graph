@@ -27,7 +27,34 @@ var link = svg.selectAll('.link')
     .enter().append('line')
     .attr('class', 'link');
 
-function tick(){
-    
+var node = d3.select('#main').selectAll('img')
+    .data(nodes)
+  .enter().append('abbr').attr('title',function(d){return d.country})
+  .append('img')
+    .style('background','flag.png')
+    .attr('class', function(d){return "flag flag-"+d.code})
+    .call(force.drag())
+    .classed('fixed', function(d){d.fixed=false})
+
+force.on('end', function() {
+    node
+        .style('left', function(d) { return d.x-5+'px'; })
+        .style('top', function(d) { return d.y-5+'px'; });
+
+    link.attr('x1', function(d) { return d.source.x; })
+        .attr('y1', function(d) { return d.source.y; })
+        .attr('x2', function(d) { return d.target.x; })
+        .attr('y2', function(d) { return d.target.y; });
+
+});
+force.start();
+
+function tick() {
+  link.attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; });
+  node.style('left', function(d) { return d.x-5+'px'; })
+      .style('top', function(d) { return d.y-5+'px'; });
 }
 });
