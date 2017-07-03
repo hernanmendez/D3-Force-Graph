@@ -27,7 +27,7 @@ var link = svg.selectAll('.link')
     .enter().append('line')
     .attr('class', 'link');
 
-var node = d3.select('#main').selectAll('img')
+var node = d3.select('#main').selectAll('abbr')
     .data(nodes)
   .enter().append('abbr').attr('title',function(d){return d.country})
   .append('img')
